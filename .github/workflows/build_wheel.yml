@@ -35,3 +35,18 @@ jobs:
         python3 -m build --outdir=dist --wheel
         python3 -m pip install --no-index --find-links=dist pypff-stubs
         mypy --strict -c 'import pypff; reveal_type(pypff.file)'
+    - name: Publish wheels
+      if: TODO
+      run: |
+        aws \
+            s3 \
+            cp \
+            --region us-east-1 \
+            dist/libpff-python*.whl \
+            s3://everlaw-build-artifacts/libpff/
+        aws \
+            s3 \
+            cp \
+            --region us-east-1 \
+            stubs/dist/pypff-stubs*.whl \
+            s3://everlaw-build-artifacts/libpff/
