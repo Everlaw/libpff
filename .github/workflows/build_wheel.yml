@@ -3,6 +3,11 @@ on: [push]
 permissions: read-all
 jobs:
   build_wheel:
+    strategy:
+      matrix:
+        python-version:
+          - 3.9.20
+          - 3.12.6
     runs-on: [self-hosted, libpff]
     steps:
     - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
@@ -14,11 +19,11 @@ jobs:
         ./synclibs.sh --use-head && ./autogen.sh && ./configure && make sources >/dev/null
     - name: Install Python
       run: |
-        uv python install 3.9.20
+        uv python install ${{ matrix.python-version }}
     - name: Create virtual environment
       run: |
         rm -rf venv
-        uv venv --python 3.9.20 venv
+        uv venv --python ${{ matrix.python-version }} venv
         echo "$(pwd)/venv/bin" >> $GITHUB_PATH
     - name: Install Python dependencies
       run: |
