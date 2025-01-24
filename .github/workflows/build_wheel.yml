@@ -3,6 +3,11 @@ on: [push]
 permissions: read-all
 jobs:
   build_wheel:
+    strategy:
+      matrix:
+        python-version:
+          - 3.9.20
+          - 3.12.6
     runs-on: [self-hosted, libpff]
     steps:
     - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
@@ -12,14 +17,17 @@ jobs:
     - name: Prepare build
       run: |
         ./synclibs.sh --use-head && ./autogen.sh && ./configure && make sources >/dev/null
+    - name: Install Python
+      run: |
+        uv python install ${{ matrix.python-version }}
     - name: Create virtual environment
       run: |
         rm -rf venv
-        python3 -m venv venv
+        uv venv --python ${{ matrix.python-version }} venv
         echo "$(pwd)/venv/bin" >> $GITHUB_PATH
     - name: Install Python dependencies
       run: |
-        python3 -m pip install \
+        uv pip install \
           'build' \
           'mypy' \
           'setuptools>=65' \
@@ -27,13 +35,13 @@ jobs:
     - name: Build libpff-python wheel
       run: |
         python3 -m build --no-isolation --outdir=dist --wheel
-        python3 -m pip install --no-index --find-links=dist libpff-python
+        uv pip install --no-index --find-links=dist libpff-python
         python3 tests/runtests.py
     - name: Build pypff-stubs wheel
       working-directory: stubs
       run: |
         python3 -m build --outdir=dist --wheel
-        python3 -m pip install --no-index --find-links=dist pypff-stubs
+        uv pip install --no-index --find-links=dist pypff-stubs
         mypy --strict -c 'import pypff; reveal_type(pypff.file)'
     - name: Upload wheels
       run: |
