@@ -50,7 +50,7 @@ do
             LATEST_TAG="20240414";
 	elif test ${LOCAL_LIB} = "libcpath";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260520";
 	elif test ${LOCAL_LIB} = "libcsplit";
 	then
             LATEST_TAG="20240414";
