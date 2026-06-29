@@ -32,55 +32,55 @@ do
 	#       ensure repeatable builds, we fix the tag for each dependency.
 	if test ${LOCAL_LIB} = "libbfio";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260623";
 	elif test ${LOCAL_LIB} = "libcdata";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260612";
 	elif test ${LOCAL_LIB} = "libcerror";
 	then
-            LATEST_TAG="20240413";
+            LATEST_TAG="20260612";
 	elif test ${LOCAL_LIB} = "libcfile";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260615";
 	elif test ${LOCAL_LIB} = "libclocale";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260612";
 	elif test ${LOCAL_LIB} = "libcnotify";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260612";
 	elif test ${LOCAL_LIB} = "libcpath";
 	then
-            LATEST_TAG="20260520";
+            LATEST_TAG="20260621";
 	elif test ${LOCAL_LIB} = "libcsplit";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260612";
 	elif test ${LOCAL_LIB} = "libcthreads";
 	then
-            LATEST_TAG="20240413";
+            LATEST_TAG="20260615";
 	elif test ${LOCAL_LIB} = "libfcache";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260520";
 	elif test ${LOCAL_LIB} = "libfdata";
 	then
-            LATEST_TAG="20240415";
+            LATEST_TAG="20260521";
 	elif test ${LOCAL_LIB} = "libfdatetime";
 	then
-            LATEST_TAG="20240415";
+            LATEST_TAG="20260521";
 	elif test ${LOCAL_LIB} = "libfguid";
 	then
-            LATEST_TAG="20240415";
+            LATEST_TAG="20260521";
 	elif test ${LOCAL_LIB} = "libfmapi";
 	then
-            LATEST_TAG="20240415";
+            LATEST_TAG="20260521";
 	elif test ${LOCAL_LIB} = "libfvalue";
 	then
-            LATEST_TAG="20240415";
+            LATEST_TAG="20260522";
 	elif test ${LOCAL_LIB} = "libfwnt";
 	then
-            LATEST_TAG="20240415";
+            LATEST_TAG="20260602";
 	elif test ${LOCAL_LIB} = "libuna";
 	then
-            LATEST_TAG="20240414";
+            LATEST_TAG="20260602";
         else
 	    echo "Undefined static latest tag for: ${LOCAL_LIB}";
 	    exit ${EXIT_FAILURE};
