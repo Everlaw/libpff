@@ -41,7 +41,7 @@ do
             LATEST_TAG="20260612";
 	elif test ${LOCAL_LIB} = "libcfile";
 	then
-            LATEST_TAG="20260615";
+            LATEST_TAG="20260704";
 	elif test ${LOCAL_LIB} = "libclocale";
 	then
             LATEST_TAG="20260612";
